@@ -18,7 +18,8 @@ class _HomePageState extends State<HomePage> {
   late List<Widget> pages = [
     _homeContent(),
     _aboutMeContent(),
-    _servicesContent(),
+    _servicesContent(context),
+    _contactContent(),
   ];
 
   String isReadMore = "Read More";
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         ),
         child: PageView.builder(
           scrollDirection: Axis.vertical,
-          itemCount: 3,
+          itemCount: 4,
           controller: pageController,
           itemBuilder: (context, index) {
             return pages[index];
@@ -343,15 +344,198 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _servicesContent() {
+  Widget _servicesContent(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text(
           "Services",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 45),
         ),
+        const SizedBox(height: 10),
         Row(
-          children: [Container()],
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Mobile
+            Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(25),
+              width: width / 4,
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.mobile_friendly_rounded,
+                    color: Colors.black,
+                    size: 80,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    "Mobile App \nDevelopment",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: width / 4,
+                    child: const Text(
+                      "I have experience developing mobile applications for both iOS and Android platforms using Flutter. This cross-platform framework allows me to create seamless and efficient apps with a single codebase, ensuring smooth performance on both operating systems. My projects have involved integrating real-time data, AI features, and user-friendly interfaces, and I continuously strive to improve my skills in mobile app development to create engaging and high-performing apps for diverse audiences.",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(color: Colors.black, fontSize: 10),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Web
+            Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(25),
+              width: width / 4,
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.web,
+                    color: Colors.black,
+                    size: 80,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    "Website \nDevelopment",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: width / 4,
+                    child: const Text(
+                      "In web development using Flutter, I focus on building responsive and visually appealing web applications that can run seamlessly across browsers. Flutter Web allows me to use a single codebase to develop both mobile and web apps, ensuring consistency and reducing development time. With Flutter’s rich widget library, I can design interactive, modern, and responsive UIs that adapt well to different screen sizes and devices. For the backend, I integrate Firebase for real-time databases, user authentication, and cloud storage.",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(color: Colors.black, fontSize: 10),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Backend
+            Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(25),
+              width: width / 4,
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.backup_outlined,
+                    color: Colors.black,
+                    size: 80,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    "Backend \nDevelopment",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: width / 4,
+                    child: const Text(
+                      "In my Flutter development projects, I’ve worked with various backend technologies to ensure seamless functionality and data management. I often use Firebase as a backend solution, which provides features like real-time databases, cloud storage, authentication, and hosting. Firebase integrates smoothly with Flutter, allowing for efficient user authentication, data synchronization, and secure cloud storage. Use REST APIs to connect the web application to external services and data sources.",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(color: Colors.black, fontSize: 10),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _contactContent() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        RichText(
+          text: const TextSpan(
+            text: "Contact ",
+            style: TextStyle(
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+              fontSize: 50,
+            ),
+            children: [
+              TextSpan(
+                  text: "Me",
+                  style: TextStyle(
+                      color: AppColors.primaryColor, fontFamily: "Poppins")),
+            ],
+          ),
+        ),
+        const SizedBox(height: 50),
+        const Text(
+          "You can contact me through Instagram and LinkedIn",
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Center(child: _socialIconButton()),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text(
+            "Feel free to reach out for any inquiries or collaborations!"),
+        Spacer(),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Text("© Mohammed Asfar, 2024. All Rights Reserved."),
         )
       ],
     );
@@ -359,6 +543,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget _socialIconButton() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         InkWell(
           borderRadius: BorderRadius.circular(50),
