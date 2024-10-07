@@ -466,7 +466,7 @@ class _HomePageWindowState extends State<HomePageWindow> {
 
   Widget _servicesContentWidget(IconData icon, String title, String content) {
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    // final height = MediaQuery.of(context).size.height;
     return Container(
       width: width / 4,
       margin: const EdgeInsets.all(10),
@@ -510,7 +510,7 @@ class _HomePageWindowState extends State<HomePageWindow> {
   }
 
   Widget _servicesContent(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    // final width = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
