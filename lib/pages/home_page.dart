@@ -22,6 +22,11 @@ class _HomePageState extends State<HomePage> {
     _contactContent(),
   ];
 
+  bool homeCursor = false;
+  bool aboutCursor = false;
+  bool servicesCursor = false;
+  bool contactCursor = false;
+
   String isReadMore = "Read More";
   bool onHover = false;
   String contextText =
@@ -57,20 +62,29 @@ class _HomePageState extends State<HomePage> {
     return Container(
       color: Colors.transparent,
       height: 70,
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            width: 100,
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              decoration: const BoxDecoration(boxShadow: [
+                BoxShadow(blurRadius: 20, color: AppColors.primaryColor)
+              ], shape: BoxShape.circle),
+              child: const CircleAvatar(
+                radius: 25,
+                backgroundImage: AssetImage(AppImages.profile),
+              ),
+            ),
           ),
-          Text(
+          const Text(
             "Mohammed",
             style: TextStyle(
               fontWeight: FontWeight.w900,
               fontSize: 16,
             ),
           ),
-          Text(
+          const Text(
             " Asfar",
             style: TextStyle(
               fontWeight: FontWeight.w900,
@@ -78,43 +92,137 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.primaryColor,
             ),
           ),
-          Spacer(),
-          MouseRegion(
-            child: Text(
-              "Home",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
+          const Spacer(),
+          GestureDetector(
+            onTap: () {
+              pageController.animateToPage(0,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.linearToEaseOut);
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              onEnter: (event) {
+                setState(() {
+                  homeCursor = true;
+                });
+              },
+              onExit: (event) {
+                setState(() {
+                  homeCursor = false;
+                });
+              },
+              child: Text(
+                "Home",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  decorationStyle: TextDecorationStyle.solid,
+                  decorationThickness: 4,
+                  decorationColor: AppColors.primaryColor,
+                  decoration: homeCursor ? TextDecoration.underline : null,
+                ),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 25,
           ),
-          Text(
-            "About",
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
+          GestureDetector(
+            onTap: () {
+              pageController.animateToPage(1,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.linearToEaseOut);
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              onEnter: (event) {
+                setState(() {
+                  aboutCursor = true;
+                });
+              },
+              onExit: (event) {
+                setState(() {
+                  aboutCursor = false;
+                });
+              },
+              child: Text(
+                "About",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  decorationStyle: TextDecorationStyle.solid,
+                  decorationThickness: 4,
+                  decorationColor: AppColors.primaryColor,
+                  decoration: aboutCursor ? TextDecoration.underline : null,
+                ),
+              ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 25,
           ),
-          Text(
-            "Services",
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
+          GestureDetector(
+            onTap: () {
+              pageController.animateToPage(2,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.linearToEaseOut);
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              onEnter: (event) {
+                setState(() {
+                  servicesCursor = true;
+                });
+              },
+              onExit: (event) {
+                setState(() {
+                  servicesCursor = false;
+                });
+              },
+              child: Text(
+                "Services",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  decorationStyle: TextDecorationStyle.solid,
+                  decorationThickness: 4,
+                  decorationColor: AppColors.primaryColor,
+                  decoration: servicesCursor ? TextDecoration.underline : null,
+                ),
+              ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 25,
           ),
-          Text(
-            " Contact",
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
+          GestureDetector(
+            onTap: () {
+              pageController.animateToPage(3,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.linearToEaseOut);
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              onEnter: (event) {
+                setState(() {
+                  contactCursor = true;
+                });
+              },
+              onExit: (event) {
+                setState(() {
+                  contactCursor = false;
+                });
+              },
+              child: Text(
+                "Contact",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  decorationStyle: TextDecorationStyle.solid,
+                  decorationThickness: 4,
+                  decorationColor: AppColors.primaryColor,
+                  decoration: contactCursor ? TextDecoration.underline : null,
+                ),
+              ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 100,
           )
         ],
@@ -189,7 +297,11 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          pageController.animateToPage(3,
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.linearToEaseOut);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primaryColor,
                           shadowColor: AppColors.primaryColor,
@@ -202,7 +314,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 10),
                       OutlinedButton(
                         onPressed: () {
-                          pageController.animateToPage(1,
+                          pageController.animateToPage(3,
                               duration: const Duration(seconds: 1),
                               curve: Curves.linearToEaseOut);
                         },
@@ -532,9 +644,9 @@ class _HomePageState extends State<HomePage> {
         ),
         const Text(
             "Feel free to reach out for any inquiries or collaborations!"),
-        Spacer(),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
+        const Spacer(),
+        const Padding(
+          padding: EdgeInsets.all(20.0),
           child: Text("© Mohammed Asfar, 2024. All Rights Reserved."),
         )
       ],
