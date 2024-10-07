@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/core/theme/app_theme.dart';
-import 'pages/windows/home_page.dart';
+import 'package:portfolio_website/responsive_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: const HomePage(),
+      home: const ResponsiveLayout(),
     );
   }
 }
